@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl"><head>
+<!-- skill:chrome -->
+<style>
+/* Credit line — bottom-right */
+.design-ui-credit {
+  position: fixed;
+  bottom: 12px;
+  right: 12px;
+  font: 11px/1 system-ui, sans-serif;
+  color: rgba(128,128,128,0.5);
+  pointer-events: none;
+  z-index: 2147483647;
+  transition: opacity 0.4s ease;
+  user-select: none;
+  letter-spacing: 0.02em;
+}
+
+/* Hide chrome on touch devices */
+@media (hover: none) {
+  .design-ui-credit { display: none; }
+}
+
+/* Print fixes */
+@media print {
+  * {
+    transition: none !important;
+    animation: none !important;
+    box-shadow: none !important;
+  }
+  body {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .design-ui-credit { display: none !important; }
+}
+
+</style>
+<script>
+(function () {
+    // Design-ui pages are single compositions, so the whole body is editable.
+    function markEditable() {
+        document.body.classList.add('artifact-editable');
+    }
+
+    // Credit badge with idle-fade. Hover devices only.
+    function initChromeUI() {
+        if (!matchMedia('(hover: hover)').matches) return;
+
+        var credit = document.createElement('div');
+        credit.className = 'design-ui-credit';
+        credit.setAttribute('aria-hidden', 'true');
+        credit.innerHTML = '\u{1F49C} by ClickUp Brain';
+        document.body.appendChild(credit);
+
+        var timer = null;
+        var fade = function (out) { credit.style.opacity = out ? '0' : ''; };
+        fade(true);
+        var show = function () {
+            fade(false);
+            clearTimeout(timer);
+            timer = setTimeout(function () { fade(true); }, 3000);
+        };
+        document.addEventListener('mousemove', show);
+        show();
+    }
+
+    function init() {
+        markEditable();
+        initChromeUI();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+
+</script>
+<!-- /skill:chrome --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>TonUp</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&family=Chakra+Petch:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg0:oklch(0.14 0.03 275);--bg1:oklch(0.18 0.04 275);--bg2:oklch(0.22 0.05 275);--cyan:oklch(0.82 0.14 215);--blue:oklch(0.62 0.2 260);--violet:oklch(0.55 0.24 300);--gold:oklch(0.85 0.15 85);--pink:oklch(0.7 0.2 350);--text:oklch(0.95 0.01 275);--mut:oklch(0.7 0.03 275);--line:oklch(1 0 0/.09);--ease:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;overflow-x:hidden}
+body{background:radial-gradient(120% 50% at 50% 0,oklch(0.28 0.12 285),var(--bg0) 60%) fixed;color:var(--text);font-family:'Vazirmatn',sans-serif}
+.en{font-family:'Chakra Petch','Vazirmatn',sans-serif;letter-spacing:.03em}
+#app{max-width:480px;margin:0 auto;height:100%;position:relative}
+.top{display:flex;justify-content:space-between;align-items:center;padding:calc(12px + env(safe-area-inset-top)) 18px 8px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:20px}.logo svg{width:30px;height:30px;animation:fl 4s ease-in-out infinite}.logo b{color:var(--cyan)}
+@keyframes fl{50%{transform:translateY(-3px)}}
+.chip{background:var(--bg2);border:1px solid var(--line);color:var(--text);border-radius:12px;padding:6px 10px;font:inherit;font-size:12px;cursor:pointer}
+.scr{position:absolute;inset:60px 0 0;overflow:auto;padding:8px 16px calc(100px + env(safe-area-inset-bottom));display:none;animation:in .5s var(--ease)}
+.scr.on{display:block}@keyframes in{from{opacity:0;transform:translateY(14px)}}
+.card{background:linear-gradient(160deg,oklch(1 0 0/.07),oklch(1 0 0/.02));border:1px solid var(--line);border-radius:26px;padding:18px;margin-bottom:14px;box-shadow:inset 0 1px 0 oklch(1 0 0/.08),0 12px 30px oklch(0 0 0/.3)}
+.c{text-align:center}.mut{color:var(--mut);font-size:12px}
+.av{width:92px;height:92px;border-radius:50%;margin:0 auto 10px;background:conic-gradient(var(--cyan),var(--violet),var(--pink),var(--cyan));padding:3px;box-shadow:0 0 36px oklch(0.7 0.2 260/.55)}
+.av img,.av div{width:100%;height:100%;border-radius:50%;background:var(--bg1);display:grid;place-items:center;font-size:34px;object-fit:cover}
+.bal{font-size:40px;font-weight:800;color:var(--cyan);margin:4px 0}
+.btn{display:block;width:100%;border:0;border-radius:18px;padding:13px;font:inherit;font-weight:800;color:oklch(0.15 0.03 275);background:linear-gradient(135deg,var(--cyan),var(--blue));cursor:pointer;box-shadow:0 8px 24px oklch(0.6 0.18 240/.45);transition:transform .2s var(--ease)}
+.btn:active{transform:scale(.96)}.btn:disabled{opacity:.45}.btn.v{background:linear-gradient(135deg,var(--violet),var(--pink));color:var(--text)}
+.input{width:100%;background:var(--bg0);border:1px solid var(--line);border-radius:16px;padding:12px;color:var(--text);font:inherit;text-align:center;margin:10px 0}
+.empty{text-align:center;padding:70px 20px}.empty em{font-size:70px;font-style:normal;display:block;animation:fl 3s ease-in-out infinite}
+.task{display:flex;gap:12px;align-items:center}.task .ic{font-size:30px}.task .b{flex:1;min-width:0}.task h4{font-size:15px}
+.task .rw{color:var(--gold);font-weight:800;font-size:13px}.task button{width:auto;padding:9px 16px;font-size:13px}
+.li{display:flex;align-items:center;gap:10px;padding:11px 2px;border-bottom:1px solid var(--line);font-size:14px}
+.li img,.li .a{width:32px;height:32px;border-radius:50%;background:var(--bg2);display:grid;place-items:center}
+.li .r{width:26px;color:var(--mut)}.li .t{margin-inline-start:auto;color:var(--cyan);font-weight:800}
+.pod{display:flex;align-items:flex-end;justify-content:center;gap:10px;height:210px;margin-bottom:16px}
+.pod div{width:100px;border-radius:22px 22px 10px 10px;text-align:center;padding-top:12px;font-size:12px;overflow:hidden}.pod b{display:block;font-size:14px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;padding:0 4px}
+.p1{height:190px;background:linear-gradient(var(--gold),oklch(0.5 0.1 70/.3));color:oklch(0.2 0.05 80)}
+.p2{height:150px;background:linear-gradient(oklch(0.85 0.02 260),oklch(0.4 0.03 260/.3));color:oklch(0.2 0.02 260)}
+.p3{height:120px;background:linear-gradient(oklch(0.7 0.12 55),oklch(0.4 0.08 50/.3));color:oklch(0.2 0.04 50)}
+.stat{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}.stat div{background:var(--bg1);border-radius:16px;padding:12px;text-align:center}.stat b{font-size:20px;display:block;color:var(--gold)}
+.gcard{border-radius:26px;padding:20px;margin-bottom:12px;border:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;opacity:.75}
+.gcard em{font-size:46px;font-style:normal;animation:fl 3.5s ease-in-out infinite}
+nav{position:fixed;bottom:calc(12px + env(safe-area-inset-bottom));inset-inline:14px;max-width:452px;margin:0 auto;height:66px;border-radius:26px;background:oklch(0.2 0.04 275/.88);backdrop-filter:blur(14px);border:1px solid var(--line);display:flex;justify-content:space-around;align-items:center}
+nav button{background:none;border:0;color:var(--mut);font:inherit;font-size:11px;display:grid;gap:2px;justify-items:center;cursor:pointer;padding:6px 10px;border-radius:16px;transition:all .3s var(--ease)}
+nav button span{font-size:22px;filter:grayscale(1);transition:transform .3s var(--ease)}
+nav button.on{color:var(--cyan);background:oklch(0.7 0.15 230/.14);box-shadow:0 0 20px oklch(0.7 0.15 230/.35)}nav button.on span{filter:none;transform:translateY(-3px) scale(1.15)}
+.ov{position:fixed;inset:0;background:var(--bg0);display:grid;place-items:center;z-index:9;text-align:center;transition:opacity .5s}.ov.off{opacity:0;pointer-events:none}
+.ring{width:110px;height:110px;border-radius:50%;border:3px solid var(--line);border-top-color:var(--cyan);animation:sp 1s linear infinite;display:grid;place-items:center;margin:0 auto 14px}@keyframes sp{to{transform:rotate(360deg)}}
+.toast{position:fixed;top:70px;inset-inline:20px;background:var(--bg2);border:1px solid var(--cyan);border-radius:16px;padding:12px;text-align:center;z-index:10;transform:translateY(-140%);transition:transform .4s var(--ease)}.toast.on{transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style></head><body><div id="app">
+<div class="ov" id="ov"><div><div class="ring"><svg width="52" height="52" viewBox="0 0 32 32"><path d="M6 8h20M16 8v10M8 18a8 8 0 0016 0" stroke="oklch(0.82 0.14 215)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M16 2l5 6h-10z" fill="oklch(0.85 0.15 85)"/></svg></div><h2 class="en">TON<span style="color:var(--cyan)">UP</span></h2><p class="mut" id="ovmsg"></p></div></div>
+<div class="toast" id="toast"></div>
+<div class="top"><div class="logo"><svg viewBox="0 0 32 32"><defs><linearGradient id="lg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="oklch(0.82 0.14 215)"/><stop offset="1" stop-color="oklch(0.55 0.24 300)"/></linearGradient></defs><rect width="32" height="32" rx="10" fill="url(#lg)"/><path d="M8 11h16M16 11v8M10 19a6 6 0 0012 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M16 4l3.5 4h-7z" fill="oklch(0.9 0.14 90)"/></svg><span class="en">TON<b>UP</b></span></div><button class="chip" id="lb"></button></div>
+
+<section class="scr on" id="profile"><div class="card c"><div class="av" id="av"></div><h3 id="nm"></h3><div class="mut" id="un"></div><div class="mut" style="margin-top:10px" data-i="balance"></div><div class="bal en" id="bal">0.000</div><div class="mut"><span data-i="earned"></span>: <b class="en" id="ern"></b></div></div>
+<div class="card"><h3>🎁 <span data-i="gift"></span></h3><input class="input en" id="gc" placeholder="TONUP2026" dir="ltr" autocapitalize="characters"><button class="btn v" id="gb" data-i="activate"></button></div></section>
+<section class="scr" id="tasks"></section>
+<section class="scr" id="play"><div class="gcard" style="background:linear-gradient(135deg,oklch(0.5 0.2 300),oklch(0.4 0.18 250))"><div><h3>Daily Wheel</h3><p class="mut" data-i="soon"></p></div><em>🎡</em></div><div class="gcard" style="background:linear-gradient(135deg,oklch(0.45 0.16 230),oklch(0.25 0.06 260))"><div><h3>Crash</h3><p class="mut" data-i="soon"></p></div><em>🚀</em></div><div class="gcard" style="background:linear-gradient(135deg,oklch(0.5 0.2 20),oklch(0.26 0.08 300))"><div><h3>Arena</h3><p class="mut" data-i="soon"></p></div><em>⚔️</em></div><div class="gcard" style="background:linear-gradient(135deg,oklch(0.45 0.14 150),oklch(0.24 0.05 200))"><div><h3>Bomb</h3><p class="mut" data-i="soon"></p></div><em>💣</em></div></section>
+<section class="scr" id="top"></section>
+<section class="scr" id="invite"></section>
+<nav><button class="on" data-s="profile"><span>👤</span><i data-i="n1" style="font-style:normal"></i></button><button data-s="tasks"><span>🎯</span><i data-i="n2" style="font-style:normal"></i></button><button data-s="play"><span>🎮</span><i data-i="n3" style="font-style:normal"></i></button><button data-s="top"><span>🏆</span><i data-i="n4" style="font-style:normal"></i></button><button data-s="invite"><span>🎁</span><i data-i="n5" style="font-style:normal"></i></button></nav></div>
+<script>
+const tg=window.Telegram?.WebApp;tg?.ready();tg?.expand();tg?.setHeaderColor?.('#0D1020');tg?.setBackgroundColor?.('#080914');
+const T={fa:{n1:'پروفایل',n2:'وظایف',n3:'بازی',n4:'لیدربرد',n5:'دعوت',balance:'موجودی',earned:'درآمد',gift:'کد هدیه',activate:'فعال‌سازی',notasks:'در حال حاضر وظیفه‌ای برای انجام وجود ندارد.',go:'انجام وظیفه',done:'انجام شد',soon:'به‌زودی',invite:'دعوت دوستان',copy:'کپی لینک',share:'اشتراک‌گذاری',tot:'کل دعوت‌ها',act:'فعال',pend:'در انتظار',norank:'هنوز رتبه‌بندی‌ای نیست',me:'رتبه من',err:'خطایی رخ داد. لطفاً دوباره تلاش کنید.',maint:'🛠️ TonUp در حال تعمیر است. لطفاً بعداً دوباره تلاش کنید.',ok:'انجام شد',copied:'کپی شد',loading:'در حال بارگذاری...',e_invalid_code:'کد نامعتبر است',e_expired:'کد منقضی شده',e_exhausted:'ظرفیت کد تمام شده',e_limit_reached:'قبلاً استفاده کرده‌اید',e_not_member:'هنوز عضو نشده‌اید',e_already_done:'قبلاً انجام شده',e_slow_down:'کمی آهسته‌تر',friends:'دوستان',earners:'🏆 بیشترین درآمد',rich:'💎 ثروتمندترین‌ها'},
+en:{n1:'Profile',n2:'Tasks',n3:'Games',n4:'Ranks',n5:'Invite',balance:'BALANCE',earned:'Earned',gift:'Gift code',activate:'ACTIVATE',notasks:'No tasks available',go:'DO TASK',done:'DONE',soon:'COMING SOON',invite:'Invite Friends',copy:'COPY LINK',share:'SHARE',tot:'Invites',act:'Active',pend:'Pending',norank:'No rankings yet',me:'My rank',err:'Something went wrong. Please try again.',maint:'🛠️ TonUp is under maintenance. Please try again later.',ok:'Done',copied:'Copied',loading:'Loading...',e_invalid_code:'Invalid code',e_expired:'Code expired',e_exhausted:'Code fully used',e_limit_reached:'Already redeemed',e_not_member:'You have not joined yet',e_already_done:'Already done',e_slow_down:'Slow down',friends:'Friends',earners:'🏆 Top Earners',rich:'💎 Richest'}};
+let lang=localStorage.lang||((tg?.initDataUnsafe?.user?.language_code||'fa').startsWith('fa')?'fa':'en'),token='',board='earners',U={};
+const $=id=>document.getElementById(id),t=k=>T[lang][k]||k,esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=n=>Number(n).toFixed(3);
+function toast(m){const e=$('toast');e.textContent=m;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),2500)}
+const hap=k=>tg?.HapticFeedback?.notificationOccurred(k);
+async function api(p,o={}){const r=await fetch('/api'+p,{...o,headers:{'content-type':'application/json',authorization:'Bearer '+token}});const j=await r.json().catch(()=>({}));if(!r.ok)throw{status:r.status,code:j.detail||j.error};return j}
+function errMsg(e){return e.status===503?t('maint'):T[lang]['e_'+e.code]||t('err')}
+function applyLang(){document.documentElement.dir=lang==='fa'?'rtl':'ltr';document.documentElement.lang=lang;document.querySelectorAll('[data-i]').forEach(e=>e.textContent=t(e.dataset.i));$('lb').textContent=lang==='fa'?'🇬🇧 EN':'🇮🇷 فا';if(token)renderAll()}
+$('lb').onclick=()=>{lang=lang==='fa'?'en':'fa';localStorage.lang=lang;applyLang();tg?.HapticFeedback?.selectionChanged()};
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button,.scr').forEach(x=>x.classList.remove('on'));b.classList.add('on');$(b.dataset.s).classList.add('on');tg?.HapticFeedback?.impactOccurred('light');load(b.dataset.s)});
+function renderProfile(){$('av').innerHTML=U.photo?`<img src="${esc(U.photo)}" alt="">`:'<div>🧑‍🚀</div>';$('nm').textContent=U.name;$('un').textContent=(U.username?'@'+U.username+' · ':'')+'ID '+U.tg_id;$('bal').textContent=fmt(U.balance)+' TON';$('ern').textContent=fmt(U.earned)}
+async function loadTasks(){const l=await api('/tasks');$('tasks').innerHTML=l.length?l.map(x=>`<div class="card task"><div class="ic">${{join_channel:'📣',join_group:'👥',visit_link:'🔗',start_bot:'🤖',view_content:'👁'}[x.type]||'🎯'}</div><div class="b"><h4>${esc(x.title)}</h4><div class="mut">${esc(x.description)}</div><div class="rw en">+${fmt(x.reward)} TON</div></div><button class="btn" data-id="${x.id}" data-u="${esc(x.target)}" data-t="${x.type}" ${x.done?'disabled':''}>${x.done?t('done'):t('go')}</button></div>`).join(''):`<div class="empty"><em>🎁</em><h3>${t('notasks')}</h3></div>`;
+document.querySelectorAll('#tasks button:not(:disabled)').forEach(b=>b.onclick=async()=>{const u=b.dataset.u;if(b.dataset.t==='join_channel'||b.dataset.t==='join_group'){if(!b.dataset.opened){tg?tg.openTelegramLink('https://t.me/'+u.replace('@','')):window.open('https://t.me/'+u.replace('@',''));b.dataset.opened=1;b.textContent='✓ '+t('ok');return}}else if(u.startsWith('http')&&!b.dataset.opened){tg?tg.openLink(u):window.open(u);b.dataset.opened=1;b.textContent='✓ '+t('ok');return}
+try{const r=await api('/tasks/'+b.dataset.id+'/claim',{method:'POST'});hap('success');toast('🎉 +'+fmt(r.reward)+' TON');U.balance=r.balance;renderProfile();loadTasks()}catch(e){hap('error');toast(errMsg(e))}})}
+async function loadBoard(){const d=await api('/leaderboard?kind='+board);const tabs=`<div style="display:flex;gap:8px;margin-bottom:14px"><button class="chip" data-k="earners">${t('earners')}</button><button class="chip" data-k="rich">${t('rich')}</button></div>`;
+if(!d.top.length){$('top').innerHTML=tabs+`<div class="empty"><em>🏆</em><h3>${t('norank')}</h3></div>`}else{const p=d.top.slice(0,3),o=[p[1],p[0],p[2]],cls=['p2','p1','p3'],m=['🥈','🥇','🥉'];
+$('top').innerHTML=tabs+`<div class="pod">${o.map((x,i)=>x?`<div class="${cls[i]}"><span style="font-size:30px">${m[i]}</span><b>${esc(x.name)}</b><span class="en">${fmt(x.value)}</span></div>`:'').join('')}</div><div class="card">${d.top.slice(3).map(x=>`<div class="li"><span class="r">${x.rank}</span><span class="a">${x.photo?`<img src="${esc(x.photo)}" width=32 height=32 style="border-radius:50%">`:'👤'}</span>${esc(x.name)}<span class="t en">${fmt(x.value)}</span></div>`).join('')}</div>`;
+if(d.me.rank>23)$('top').innerHTML+=`<div class="card" style="border-color:var(--cyan)"><div class="li" style="border:0"><span class="r">${d.me.rank}</span>${t('me')}<span class="t en">${fmt(d.me.value)}</span></div></div>`}
+document.querySelectorAll('#top [data-k]').forEach(b=>b.onclick=()=>{board=b.dataset.k;loadBoard()})}
+async function loadInvite(){const d=await api('/referrals');$('invite').innerHTML=`<div class="card c"><div style="font-size:48px">🎁</div><h3>${t('invite')}</h3><p class="mut">+1 TON · +2.5 TON</p><input class="input en" id="rl" readonly dir="ltr" value="${esc(d.link)}"><button class="btn" id="cp">${t('copy')}</button><button class="btn v" id="sh" style="margin-top:8px">${t('share')}</button></div><div class="stat"><div><b>${d.total}</b><small class="mut">${t('tot')}</small></div><div><b>${d.active}</b><small class="mut">${t('act')}</small></div><div><b class="en">${fmt(d.earned)}</b><small class="mut">TON</small></div></div><div class="card">${d.friends.map(f=>`<div class="li">👤 ${esc(f.name)}<span class="mut">${f.active?t('act'):'⏳'}</span><span class="t en">+${fmt(f.reward)}</span></div>`).join('')||`<p class="mut c">${t('friends')}: 0</p>`}</div>`;
+$('cp').onclick=()=>{navigator.clipboard?.writeText(d.link);toast(t('copied'));tg?.HapticFeedback?.impactOccurred('medium')};
+$('sh').onclick=()=>{const u='https://t.me/share/url?url='+encodeURIComponent(d.link);tg?tg.openTelegramLink(u):window.open(u)}}
+$('gb').onclick=async()=>{const c=$('gc').value.trim();if(!c)return;try{const r=await api('/gift',{method:'POST',body:JSON.stringify({code:c})});hap('success');toast('🎉 +'+fmt(r.reward)+' TON');U.balance=r.balance;renderProfile();$('gc').value=''}catch(e){hap('error');toast(errMsg(e))}};
+function load(s){const f={tasks:loadTasks,top:loadBoard,invite:loadInvite}[s];f&&f().catch(e=>toast(errMsg(e)))}
+function renderAll(){renderProfile()}
+(async()=>{applyLang();$('ovmsg').textContent=t('loading');
+try{const a=await fetch('/api/auth',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({init_data:tg?.initData||''})});const j=await a.json();if(!a.ok)throw{status:a.status};if(j.maintenance){$('ovmsg').textContent=t('maint');return}
+token=j.token;U=j.user;renderProfile();applyLang();
+const sp=tg?.initDataUnsafe?.start_param||'';if(sp.startsWith('gift_')){$('gc').value=sp.slice(5)}
+setTimeout(()=>$('ov').classList.add('off'),600)}catch(e){$('ovmsg').textContent=t('err')}})();
+</script></body></html>
